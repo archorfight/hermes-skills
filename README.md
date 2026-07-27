@@ -7,12 +7,14 @@
 | Skill | 目录 | 说明 | 状态 |
 |-------|------|------|------|
 | intel-pipeline | [intel-pipeline/](intel-pipeline/) | RSS 自动采集 + 四维标签评分 + 痛点周报 | 🚧 规划中 |
+| goal-engineering | [goal-engineering/](goal-engineering/) | 派活前七问自检 + goal 模板 + 验收协议 | ✅ MVP 完成 |
 | material-intake | [material-intake/](material-intake/) | 手动入库 + RSS 流水线诊断 | ✅ 已上线 |
 | kb-search | [kb-search/](kb-search/) | ChromaDB 全库语义搜索 | ✅ 已上线 |
 
 ## 规划文档
 
 - [intel-pipeline 规划](intel-pipeline/PLAN.md) — 四维标签 + RSS 审计 + 痛点周报
+- [goal-engineering 规划](../planning/goal-engineering/goal-engineering-skill-planning.md) — 七问自检 + 执行/探索型模板 + 明卷暗卷验收
 
 ## 技术栈
 
