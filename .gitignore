@@ -1,0 +1,25 @@
+# Sensitive
+.dev.vars
+*.key
+*.pem
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+kb-venv/
+
+# Data (local only)
+*.sqlite3
+*.db
+kb_data_*/
+data/processed_urls.json
+memory/
+reports/
+
+# OS
+.DS_Store
+Thumbs.db
