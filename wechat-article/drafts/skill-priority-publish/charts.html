@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 120px;
+    background: #f5f5f5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  /* ========== 封面 ========== */
+  .cover {
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 2.35 / 1;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 40%, #21262d 100%);
+    color: #fff;
+    padding: clamp(20px, 5vw, 60px);
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255,107,107,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover::after {
+    content: "";
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(78,205,196,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover-label {
+    font-size: clamp(10px, 1.5vw, 14px);
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover h1 {
+    font-size: clamp(20px, 4.5vw, 40px);
+    font-weight: 800;
+    line-height: 1.4;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    max-width: 90%;
+  }
+  .cover h1 span.highlight {
+    background: linear-gradient(90deg, #ff6b6b, #ffa502);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cover-sub {
+    font-size: clamp(11px, 1.8vw, 16px);
+    color: rgba(255,255,255,0.45);
+    margin-top: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ========== macOS 窗口边框 ========== */
+  .window {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.08);
+    background: #fff;
+  }
+  .titlebar {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    background: #f0f0f0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+  .dot-red { background: #ff5f57; }
+  .dot-yellow { background: #febc2e; }
+  .dot-green { background: #28c840; }
+  .titlebar-text {
+    flex: 1;
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+    margin-right: 52px;
+  }
+  .window-body {
+    padding: clamp(24px, 4vw, 40px);
+  }
+
+  /* ========== 配图1：四层优先级 ========== */
+  .priority-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .priority-layer {
+    padding: clamp(14px, 2.5vw, 22px) clamp(16px, 3vw, 28px);
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 2vw, 16px);
+    position: relative;
+  }
+  .priority-layer:first-child {
+    border-radius: 10px 10px 0 0;
+  }
+  .priority-layer:last-child {
+    border-radius: 0 0 10px 10px;
+  }
+  .layer-rank {
+    font-size: clamp(14px, 2vw, 20px);
+    font-weight: 800;
+    width: 28px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .layer-content {
+    flex: 1;
+  }
+  .layer-name {
+    font-size: clamp(16px, 2.5vw, 22px);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .layer-desc {
+    font-size: clamp(11px, 1.5vw, 14px);
+    opacity: 0.75;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .layer-1 {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: #fff;
+  }
+  .layer-2 {
+    background: linear-gradient(135deg, #ffa502, #e67e22);
+    color: #fff;
+  }
+  .layer-3 {
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    color: #fff;
+  }
+  .layer-4 {
+    background: linear-gradient(135deg, #a4b0be, #636e72);
+    color: #fff;
+  }
+  .priority-note {
+    margin-top: 16px;
+    font-size: clamp(11px, 1.5vw, 13px);
+    color: #999;
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* ========== 分隔标注 ========== */
+  .chart-label {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+    font-size: 12px;
+    color: #aaa;
+    padding: 0 20px;
+  }
+  .chart-label::before {
+    content: "";
+    display: block;
+    border-top: 1px dashed #ddd;
+    margin-bottom: 8px;
+  }
+</style>
+</head>
+<body>
+
+  <!-- 封面 -->
+  <div class="cover">
+    <div class="cover-label">ONE-PERSON BUSINESS</div>
+    <h1>程序员最爱卷<span class="highlight">"提效"</span><br>但这个习惯正在拖垮你的副业</h1>
+    <div class="cover-sub">赚钱 > 降本 > 合规 > 提效</div>
+  </div>
+
+  <!-- 标注：配图1 -->
+  <div class="chart-label">配图 1</div>
+
+  <!-- 配图1：四层优先级 -->
+  <div class="window">
+    <div class="titlebar">
+      <div class="dot dot-red"></div>
+      <div class="dot dot-yellow"></div>
+      <div class="dot dot-green"></div>
+      <div class="titlebar-text">老板视角的技能优先级</div>
+    </div>
+    <div class="window-body">
+      <div class="priority-stack">
+        <div class="priority-layer layer-1">
+          <div class="layer-rank">1</div>
+          <div class="layer-content">
+            <div class="layer-name">💰 赚钱</div>
+            <div class="layer-desc">直接带来收入：获客、转化、定价、销售</div>
+          </div>
+        </div>
+        <div class="priority-layer layer-2">
+          <div class="layer-rank">2</div>
+          <div class="layer-content">
+            <div class="layer-name">📉 降本</div>
+            <div class="layer-desc">减少支出：自动化、AI 工作流、外包管理</div>
+          </div>
+        </div>
+        <div class="priority-layer layer-3">
+          <div class="layer-rank">3</div>
+          <div class="layer-content">
+            <div class="layer-name">🛡️ 合规</div>
+            <div class="layer-desc">不出事：法律、税务、合同</div>
+          </div>
+        </div>
+        <div class="priority-layer layer-4">
+          <div class="layer-rank">4</div>
+          <div class="layer-content">
+            <div class="layer-name">⚡ 提效</div>
+            <div class="layer-desc">做得更快：新框架、新语言、新工作流</div>
+          </div>
+        </div>
+      </div>
+      <div class="priority-note">没有收入的时候，"提效"排在最末尾 —— 不是不重要，是根本没到用它的阶段</div>
+    </div>
+  </div>
+
+</body>
+</html>

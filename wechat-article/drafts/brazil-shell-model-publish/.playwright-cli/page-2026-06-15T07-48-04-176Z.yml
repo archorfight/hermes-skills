@@ -1,0 +1,90 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e4]: 🇧🇷
+    - generic [ref=e5]: 🇨🇳
+    - generic [ref=e6]:
+      - generic [ref=e7]: AI · 深度洞察
+      - generic [ref=e8]:
+        - text: 巴西套壳Qwen一天翻车
+        - text: 但白嫖中国模型的人不止他们
+      - generic [ref=e9]: 开源 · 商业化 · 困局
+  - generic [ref=e10]: ▲ 封面
+  - generic [ref=e11]:
+    - generic [ref=e16]: Rio 3.5 的"自研"真相
+    - generic [ref=e17]:
+      - generic [ref=e18]: 套壳原理一目了然
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - generic [ref=e21]: 模型 A
+          - generic [ref=e22]: 60%
+        - generic [ref=e23]: +
+        - generic [ref=e24]:
+          - generic [ref=e25]: Qwen 3.5
+          - generic [ref=e26]: 40%
+        - generic [ref=e27]: =
+      - generic [ref=e28]: ⬇
+      - generic [ref=e29]:
+        - generic [ref=e30]: "\"Rio 3.5 Open 397B\" 🏆"
+        - generic [ref=e31]: 线性权重合并 · 零后期训练 · 骗过全球AI圈一天
+  - generic [ref=e32]: ▲ 配图 1 — 套壳原理
+  - generic [ref=e33]:
+    - generic [ref=e38]: 中美大模型商业模式对比
+    - generic [ref=e39]:
+      - generic [ref=e40]: 两条完全不同的路
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - generic [ref=e43]: 🇺🇸
+          - generic [ref=e44]: 美国：闭源卖钱
+          - generic [ref=e45]:
+            - generic [ref=e46]:
+              - generic [ref=e47]: "1"
+              - text: 闭源API收费
+            - generic [ref=e48]:
+              - generic [ref=e49]: "2"
+              - text: 企业客户买单
+            - generic [ref=e50]:
+              - generic [ref=e51]: "3"
+              - text: 收入投入训练
+            - generic [ref=e52]:
+              - generic [ref=e53]: "4"
+              - text: 模型更强 → 更多客户
+          - generic [ref=e54]: ✅ 正向循环
+        - generic [ref=e55]:
+          - generic [ref=e56]: 🇨🇳
+          - generic [ref=e57]: 中国：开源烧钱
+          - generic [ref=e58]:
+            - generic [ref=e59]:
+              - generic [ref=e60]: "1"
+              - text: 开源免费抢生态
+            - generic [ref=e61]:
+              - generic [ref=e62]: "2"
+              - text: 价格战 · 补贴 · 大促
+            - generic [ref=e63]:
+              - generic [ref=e64]: "3"
+              - text: 被套壳白嫖
+            - generic [ref=e65]:
+              - generic [ref=e66]: "4"
+              - text: 收入覆盖不了成本
+          - generic [ref=e67]: ❌ 融资续命
+  - generic [ref=e68]: ▲ 配图 2 — 中美商业模式对比
+  - generic [ref=e69]:
+    - generic [ref=e74]: 一人企业 AI 选型策略
+    - generic [ref=e75]:
+      - generic [ref=e76]: 别把命绑在一家上
+      - generic [ref=e77]: 保持可替换性
+      - generic [ref=e78]:
+        - generic [ref=e79]: Qwen
+        - generic [ref=e80]: DeepSeek
+        - generic [ref=e81]: GPT
+        - generic [ref=e82]: 本地模型
+      - generic [ref=e83]:
+        - generic [ref=e84]: API 抽象层
+        - generic [ref=e85]: 统一接口，一键切换后端模型
+      - generic [ref=e86]:
+        - generic [ref=e87]: Prompt 模板层
+        - generic [ref=e88]: 与具体模型解耦，不依赖特定模型特性
+      - generic [ref=e89]:
+        - generic [ref=e90]: 业务逻辑层
+        - generic [ref=e91]: 模型只是工具，核心是你自己的判断力
+      - generic [ref=e92]: 💡 模型随时可能停服，你的工作流不能
+  - generic [ref=e93]: ▲ 配图 3 — 选型策略

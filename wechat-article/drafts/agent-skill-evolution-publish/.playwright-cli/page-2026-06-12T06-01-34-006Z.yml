@@ -1,0 +1,42 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]: 一人企业 · AI实战
+    - generic [ref=e4]:
+      - text: Claude Code 100% 用自己开发自己
+      - text: 我偷了他们的 3 招
+    - generic [ref=e5]: Agent Skill 从开发到打磨到自进化
+  - separator [ref=e6]
+  - generic [ref=e7]: 📊 配图 1
+  - generic [ref=e8]:
+    - generic [ref=e13]: Anthropic 工程师的工作方式
+    - generic [ref=e15]:
+      - generic [ref=e16]:
+        - generic [ref=e17]: 📝 写需求文档
+        - generic [ref=e18]: →
+        - generic [ref=e19]: 🤖 Agent 写代码
+        - generic [ref=e20]: →
+        - generic [ref=e21]: ✅ 自动测试
+      - generic [ref=e22]:
+        - generic [ref=e23]: ❌ 测试不通过
+        - generic [ref=e24]: →
+        - generic [ref=e25]: 🔄 Agent 自己改
+        - generic [ref=e26]: →
+        - generic [ref=e27]: ✅ 改到通过
+      - generic [ref=e28]: 你只看测试结果和架构设计，代码是 Agent 的事
+  - separator [ref=e29]
+  - generic [ref=e30]: 📊 配图 2
+  - generic [ref=e31]:
+    - generic [ref=e36]: Skill 使用率对比
+    - generic [ref=e38]:
+      - generic [ref=e39]:
+        - generic [ref=e40]: 别人的 Skill
+        - generic [ref=e41]: <5%
+        - generic [ref=e42]:
+          - text: 装了 80+ 个
+          - text: 大部分没调用过
+      - generic [ref=e43]:
+        - generic [ref=e44]: 自己写的 Skill
+        - generic [ref=e45]: 100+
+        - generic [ref=e46]:
+          - text: 每个反复用上百次
+          - text: 你知道它的边界

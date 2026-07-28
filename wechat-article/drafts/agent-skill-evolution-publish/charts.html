@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>配图</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: #f5f5f5; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; gap: 80px; }
+
+.cover {
+  width: min(90vw, 705px);
+  aspect-ratio: 2.35 / 1;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(24px, 4vw, 48px);
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 60%;
+  height: 200%;
+  background: radial-gradient(ellipse, rgba(233, 69, 96, 0.15) 0%, transparent 70%);
+}
+.cover-tag {
+  font-size: clamp(10px, 1.5vw, 14px);
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.cover-title {
+  font-size: clamp(18px, 3.5vw, 32px);
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+  line-height: 1.4;
+}
+.cover-title .highlight {
+  color: #e94560;
+}
+.cover-sub {
+  font-size: clamp(11px, 1.8vw, 16px);
+  color: rgba(255,255,255,0.6);
+  margin-top: 16px;
+  text-align: center;
+}
+
+.window {
+  width: min(90vw, 640px);
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+}
+.titlebar {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  background: #f0f0f0;
+  border-bottom: 1px solid #e0e0e0;
+}
+.dot { width: 11px; height: 11px; border-radius: 50%; margin-right: 7px; }
+.dot.red { background: #ff5f57; }
+.dot.yellow { background: #febc2e; }
+.dot.green { background: #28c840; }
+.titlebar-text { margin-left: 6px; font-size: 12px; color: #999; }
+.content { padding: clamp(20px, 4vw, 36px) clamp(24px, 5vw, 40px); }
+
+.flow-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.flow-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.flow-box {
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: clamp(12px, 2vw, 14px);
+  font-weight: 600;
+  color: #fff;
+  flex: 1;
+  text-align: center;
+}
+.flow-box.dark { background: #1a1a2e; }
+.flow-box.red { background: #e94560; }
+.flow-box.blue { background: #0f3460; }
+.flow-arrow {
+  font-size: 20px;
+  color: #ccc;
+  flex-shrink: 0;
+}
+.flow-label {
+  font-size: clamp(11px, 1.6vw, 13px);
+  color: #888;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.compare-container {
+  display: flex;
+  gap: 16px;
+}
+.compare-col {
+  flex: 1;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+}
+.compare-col.bad {
+  background: #fff5f5;
+  border: 1px solid #ffd6d6;
+}
+.compare-col.good {
+  background: #f0fff4;
+  border: 1px solid #c6f6d5;
+}
+.compare-label {
+  font-size: clamp(11px, 1.6vw, 13px);
+  color: #999;
+  margin-bottom: 8px;
+}
+.compare-num {
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 800;
+}
+.compare-num.red { color: #e94560; }
+.compare-num.green { color: #28c840; }
+.compare-desc {
+  font-size: clamp(11px, 1.6vw, 13px);
+  color: #666;
+  margin-top: 6px;
+}
+
+.divider {
+  width: min(90vw, 640px);
+  border: none;
+  border-top: 2px dashed #e0e0e0;
+  margin: 40px 0;
+}
+
+.section-label {
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.evolution-container {
+  display: flex;
+  gap: 16px;
+}
+.gps-box, .seatbelt-box {
+  flex: 1;
+  padding: 16px;
+  border-radius: 8px;
+}
+.gps-box {
+  background: linear-gradient(135deg, #e8f4fd 0%, #d1ecf9 100%);
+  border: 1px solid #b8e2f5;
+}
+.seatbelt-box {
+  background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+  border: 1px solid #ffcc80;
+}
+.gps-title, .seatbelt-title {
+  font-size: clamp(14px, 2.5vw, 18px);
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.gps-desc, .seatbelt-desc {
+  font-size: clamp(11px, 1.6vw, 13px);
+  color: #888;
+  margin-bottom: 12px;
+}
+.priority-list, .rule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.priority-item, .rule-item {
+  font-size: clamp(12px, 2vw, 14px);
+  color: #333;
+}
+.p-rank {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  background: #0f3460;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  margin-right: 6px;
+}
+.evolution-footer {
+  text-align: center;
+  font-size: clamp(12px, 2vw, 14px);
+  font-weight: 700;
+  color: #e94560;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed #ddd;
+}
+
+.summary-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.summary-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+}
+.summary-num {
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  background: #1a1a2e;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.summary-text {
+  flex: 1;
+}
+.summary-label {
+  font-size: clamp(13px, 2.2vw, 16px);
+  font-weight: 700;
+  color: #1a1a2e;
+}
+.summary-sub {
+  font-size: clamp(11px, 1.6vw, 13px);
+  color: #888;
+  margin-top: 2px;
+}
+.summary-divider {
+  height: 1px;
+  background: #eee;
+  margin: 0 46px;
+}
+.summary-footer {
+  text-align: center;
+  font-size: clamp(11px, 1.6vw, 13px);
+  font-weight: 600;
+  color: #0f3460;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed #ddd;
+}
+</style>
+</head>
+<body>
+
+<!-- 封面 -->
+<div class="cover">
+  <div class="cover-tag">一人企业 · AI实战</div>
+  <div class="cover-title">Anthropic 内部已经在让<br><span class="highlight">AI 自己写 AI</span> 了<br>我拆出了 <span class="highlight">3</span> 招</div>
+  <div class="cover-sub">Agent Skill 从开发到打磨到自进化</div>
+</div>
+
+<hr class="divider">
+<div class="section-label">📊 配图 1</div>
+
+<!-- 配图1：项目经理 vs 码农 的工作流对比 -->
+<div class="window">
+  <div class="titlebar">
+    <div class="dot red"></div>
+    <div class="dot yellow"></div>
+    <div class="dot green"></div>
+    <span class="titlebar-text">Anthropic 工程师的工作方式</span>
+  </div>
+  <div class="content">
+    <div class="flow-container">
+      <div class="flow-row">
+        <div class="flow-box dark">📝 写需求文档</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box blue">🤖 Agent 写代码</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box dark">✅ 自动测试</div>
+      </div>
+      <div class="flow-row">
+        <div class="flow-box dark">❌ 测试不通过</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box red">🔄 Agent 自己改</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box dark">✅ 改到通过</div>
+      </div>
+      <div class="flow-label">你只看测试结果和架构设计，代码是 Agent 的事</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+<div class="section-label">📊 配图 2</div>
+
+<!-- 配图2：装别人Skill vs 自己写Skill -->
+<div class="window">
+  <div class="titlebar">
+    <div class="dot red"></div>
+    <div class="dot yellow"></div>
+    <div class="dot green"></div>
+    <span class="titlebar-text">Skill 使用率对比</span>
+  </div>
+  <div class="content">
+    <div class="compare-container">
+      <div class="compare-col bad">
+        <div class="compare-label">别人的 Skill</div>
+        <div class="compare-num red">&lt;5%</div>
+        <div class="compare-desc">装了 80+ 个<br>大部分没调用过</div>
+      </div>
+      <div class="compare-col good">
+        <div class="compare-label">自己写的 Skill</div>
+        <div class="compare-num green">100+</div>
+        <div class="compare-desc">每个反复用上百次<br>你知道它的边界</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+<div class="section-label">📊 配图 3</div>
+
+<!-- 配图3：进化GPS + 安全带 -->
+<div class="window">
+  <div class="titlebar">
+    <div class="dot red"></div>
+    <div class="dot yellow"></div>
+    <div class="dot green"></div>
+    <span class="titlebar-text">Agent 自进化框架</span>
+  </div>
+  <div class="content">
+    <div class="evolution-container">
+      <div class="gps-box">
+        <div class="gps-title">🧭 进化 GPS</div>
+        <div class="gps-desc">决定往哪进化</div>
+        <div class="priority-list">
+          <div class="priority-item"><span class="p-rank">1</span> 稳定性</div>
+          <div class="priority-item"><span class="p-rank">2</span> 可解释性</div>
+          <div class="priority-item"><span class="p-rank">3</span> 可复用性</div>
+        </div>
+      </div>
+      <div class="seatbelt-box">
+        <div class="seatbelt-title">🔒 安全带</div>
+        <div class="seatbelt-desc">防止乱进化</div>
+        <div class="rule-list">
+          <div class="rule-item">✅ 每次进化必须可回滚</div>
+          <div class="rule-item">✅ 不把「感觉正确」当依据</div>
+          <div class="rule-item">✅ 不引入无法验证的机制</div>
+        </div>
+      </div>
+    </div>
+    <div class="evolution-footer">可以变强，但不能变疯</div>
+  </div>
+</div>
+
+<hr class="divider">
+<div class="section-label">📊 配图 4</div>
+
+<!-- 配图4：三招总结 -->
+<div class="window">
+  <div class="titlebar">
+    <div class="dot red"></div>
+    <div class="dot yellow"></div>
+    <div class="dot green"></div>
+    <span class="titlebar-text">三招总结</span>
+  </div>
+  <div class="content">
+    <div class="summary-container">
+      <div class="summary-row">
+        <div class="summary-num">1</div>
+        <div class="summary-text">
+          <div class="summary-label">从码农变成项目经理</div>
+          <div class="summary-sub">设计系统，不写代码</div>
+        </div>
+      </div>
+      <div class="summary-divider"></div>
+      <div class="summary-row">
+        <div class="summary-num">2</div>
+        <div class="summary-text">
+          <div class="summary-label">从装别人 Skill 到自己写</div>
+          <div class="summary-sub">知道边界才能放心用</div>
+        </div>
+      </div>
+      <div class="summary-divider"></div>
+      <div class="summary-row">
+        <div class="summary-num">3</div>
+        <div class="summary-text">
+          <div class="summary-label">从手动调教到自进化</div>
+          <div class="summary-sub">可以变强，不能变疯</div>
+        </div>
+      </div>
+    </div>
+    <div class="summary-footer">2026 年的一人企业 = 一个人 + 一台电脑 + 一个能自进化的 Agent</div>
+  </div>
+</div>
+
+</body>
+</html>

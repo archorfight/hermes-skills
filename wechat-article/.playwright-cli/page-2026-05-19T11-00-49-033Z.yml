@@ -1,0 +1,81 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: 一人企业 · AI管理实录
+      - generic [ref=e5]:
+        - text: Anthropic 说管 AI 就行
+        - text: 但没人说管 AI 比管人还累
+      - generic [ref=e6]: 管 10 个 AI Agent 的真实经历
+    - generic [ref=e7]:
+      - generic [ref=e8]: 🤖
+      - generic [ref=e9]: "\"不推不动，遇事甩锅\""
+  - generic [ref=e10]:
+    - generic [ref=e15]: 我跟 AI 的三轮对话
+    - generic [ref=e16]:
+      - generic [ref=e17]: 我跟 AI 的三轮对话
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - generic [ref=e20]: 📋
+          - generic [ref=e21]: AI 出了个方案，看着不错
+        - generic [ref=e22]: ⬇️
+        - generic [ref=e23]:
+          - generic [ref=e24]: 🤔
+          - generic [ref=e25]:
+            - emphasis [ref=e26]: "\"再多想想，有没有问题？\""
+            - text: 改了三个地方，确实更好
+        - generic [ref=e27]: ⬇️
+        - generic [ref=e28]:
+          - generic [ref=e29]: ⚖️
+          - generic [ref=e30]:
+            - emphasis [ref=e31]: "\"有没有矫枉过正？\""
+            - text: 改回去一个，保留两个
+      - generic [ref=e32]:
+        - text: 三句话，三轮迭代
+        - text: 如果我不说第一句，
+        - strong [ref=e33]: 差方案直接用了
+  - generic [ref=e34]:
+    - generic [ref=e39]: AI 员工的两种"病"
+    - generic [ref=e40]:
+      - generic [ref=e41]: AI 员工的两种"病"
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - generic [ref=e44]: 🧊
+          - generic [ref=e45]:
+            - generic [ref=e46]: 症状一：不推不动
+            - generic [ref=e47]:
+              - text: 任务做到一半停下来，沉默。
+              - text: 你不催它，它就像
+              - strong [ref=e48]: 忘了这回事
+        - generic [ref=e49]:
+          - generic [ref=e50]: 🤷
+          - generic [ref=e51]:
+            - generic [ref=e52]: 症状二：先解释后解决
+            - generic [ref=e53]:
+              - text: 环境不对、权限不够……每个理由都成立
+              - text: 但
+              - strong [ref=e54]: 任务还是没完成
+      - generic [ref=e55]: 像不像你最头疼的那种下属？
+  - generic [ref=e56]:
+    - generic [ref=e61]: 管真人和管 AI，区别在哪？
+    - generic [ref=e62]:
+      - generic [ref=e63]: 管真人和管 AI，区别在哪？
+      - generic [ref=e64]:
+        - generic [ref=e65]:
+          - generic [ref=e66]: 👤
+          - generic [ref=e67]: 真人员工
+          - generic [ref=e68]:
+            - text: 会离职
+            - text: 会跳槽
+            - text: 会带走客户
+        - generic [ref=e69]: VS
+        - generic [ref=e70]:
+          - generic [ref=e71]: 🤖
+          - generic [ref=e72]: AI 员工
+          - generic [ref=e73]:
+            - text: 永远在岗
+            - text: 不会背叛
+            - text: 但需要你管理
+      - generic [ref=e74]:
+        - text: 工具不需要管理，员工需要
+        - text: 而 AI，更像员工
+        - generic [ref=e75]: 前提是：你愿意花时间把它当员工管

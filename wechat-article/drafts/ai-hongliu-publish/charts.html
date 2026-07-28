@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>封面与配图 - AI红利</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f5f5;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 120px;
+  }
+  .label {
+    font-size: clamp(12px, 2vw, 14px);
+    color: #999;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .divider {
+    width: clamp(200px, 60vw, 400px);
+    border: none;
+    border-top: 2px dashed #ccc;
+    margin: 0;
+  }
+
+  /* 封面 */
+  .cover {
+    width: clamp(280px, 75vw, 430px);
+    height: clamp(280px, 75vw, 430px);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 200, 50, 0.15);
+    border-radius: 50%;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: -40px;
+    width: 160px;
+    height: 160px;
+    background: rgba(100, 180, 255, 0.12);
+    border-radius: 50%;
+  }
+  .cover-icon {
+    font-size: clamp(36px, 8vw, 56px);
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-title {
+    font-size: clamp(18px, 4.5vw, 26px);
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.5;
+    padding: 0 30px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-title span {
+    color: #ffd700;
+  }
+  .cover-sub {
+    font-size: clamp(11px, 2.5vw, 14px);
+    color: rgba(255,255,255,0.5);
+    margin-top: 16px;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 1px;
+  }
+
+  /* macOS 窗口 */
+  .window {
+    width: clamp(300px, 80vw, 520px);
+    background: #1e1e2e;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+  .titlebar {
+    background: #2d2d3f;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot-red { background: #ff5f57; }
+  .dot-yellow { background: #febc2e; }
+  .dot-green { background: #28c840; }
+  .titlebar-text {
+    flex: 1;
+    text-align: center;
+    color: #888;
+    font-size: clamp(10px, 2vw, 12px);
+  }
+  .window-body {
+    padding: clamp(20px, 4vw, 32px);
+    color: #e0e0e0;
+  }
+
+  /* 配图1：近期大事件卡片 */
+  .events {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 2vw, 14px);
+  }
+  .event {
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    padding: clamp(10px, 2vw, 14px) clamp(12px, 2.5vw, 18px);
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(10px, 2vw, 14px);
+  }
+  .event-badge {
+    background: linear-gradient(135deg, #ffd700, #ff9800);
+    color: #1e1e2e;
+    font-size: clamp(9px, 2vw, 11px);
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .event-badge.blue {
+    background: linear-gradient(135deg, #64b5f6, #2196f3);
+    color: white;
+  }
+  .event-content {
+    flex: 1;
+  }
+  .event-title {
+    font-size: clamp(12px, 2.8vw, 15px);
+    font-weight: 600;
+    color: #e0e0e0;
+    line-height: 1.4;
+  }
+  .event-title strong {
+    color: #ffd700;
+  }
+  .event-meta {
+    font-size: clamp(10px, 2vw, 12px);
+    color: #777;
+    margin-top: 4px;
+  }
+
+  /* 配图2：公式卡片 */
+  .formula-card {
+    text-align: center;
+    padding: clamp(16px, 3vw, 24px);
+  }
+  .formula-title {
+    font-size: clamp(11px, 2.2vw, 13px);
+    color: #888;
+    margin-bottom: clamp(16px, 3vw, 24px);
+    letter-spacing: 2px;
+  }
+  .formula {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(8px, 2vw, 14px);
+    margin-bottom: clamp(12px, 2vw, 20px);
+  }
+  .formula-item {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: clamp(8px, 2vw, 14px) clamp(14px, 3vw, 22px);
+    font-size: clamp(13px, 3vw, 17px);
+    font-weight: 600;
+    color: #e0e0e0;
+  }
+  .formula-item.highlight {
+    background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(100,181,246,0.15));
+    border-color: rgba(255,215,0,0.3);
+    color: #ffd700;
+  }
+  .formula-op {
+    font-size: clamp(16px, 4vw, 22px);
+    color: #666;
+    font-weight: 300;
+  }
+  .formula-result {
+    font-size: clamp(15px, 3.5vw, 20px);
+    font-weight: 700;
+    color: #64b5f6;
+    margin-top: clamp(8px, 2vw, 12px);
+  }
+
+  /* 配图3：三个陷阱 */
+  .traps {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 2vw, 16px);
+  }
+  .trap {
+    background: rgba(255,255,255,0.04);
+    border-left: 3px solid;
+    border-radius: 0 8px 8px 0;
+    padding: clamp(12px, 2.5vw, 18px);
+  }
+  .trap-1 { border-color: #ff6b6b; }
+  .trap-2 { border-color: #ffd700; }
+  .trap-3 { border-color: #64b5f6; }
+  .trap-name {
+    font-size: clamp(13px, 3vw, 16px);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .trap-1 .trap-name { color: #ff6b6b; }
+  .trap-2 .trap-name { color: #ffd700; }
+  .trap-3 .trap-name { color: #64b5f6; }
+  .trap-quote {
+    font-size: clamp(11px, 2.5vw, 14px);
+    color: #999;
+    font-style: italic;
+    margin-bottom: 4px;
+  }
+  .trap-answer {
+    font-size: clamp(10px, 2.2vw, 12px);
+    color: #777;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<!-- 封面 -->
+<div class="label">封面</div>
+<div class="cover">
+  <div class="cover-icon">⏳</div>
+  <div class="cover-title">你怪父母没抓住<span>房产红利</span><br>轮到 AI 你也犹豫了</div>
+  <div class="cover-sub">ONE-PERSON BUSINESS · AI · 2026</div>
+</div>
+
+<hr class="divider">
+
+<!-- 配图1：近期 AI 大事件 -->
+<div class="label">配图 1 — 最近发生了什么</div>
+<div class="window">
+  <div class="titlebar">
+    <div class="dot dot-red"></div>
+    <div class="dot dot-yellow"></div>
+    <div class="dot dot-green"></div>
+    <div class="titlebar-text">2026 · AI 红利已来</div>
+  </div>
+  <div class="window-body">
+    <div class="events">
+      <div class="event">
+        <div class="event-badge">NYT</div>
+        <div class="event-content">
+          <div class="event-title">一人 + AI，<strong>两个月做出 18 亿美元</strong>公司</div>
+          <div class="event-meta">Matthew Gallagher，Medvi · 纽约时报 4 月报道</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-badge">HN 413↑</div>
+        <div class="event-content">
+          <div class="event-title">AI Agent 自动<strong>注册账号、买域名、部署上线</strong></div>
+          <div class="event-meta">Cloudflare 官方公告 · 零人工干预</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-badge">Substack</div>
+        <div class="event-content">
+          <div class="event-title">Solo founder <strong>8000 万美元</strong>卖掉一人公司</div>
+          <div class="event-meta">零员工 · 全靠 AI Agent 做增长和运营</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-badge blue">HN 热文</div>
+        <div class="event-content">
+          <div class="event-title"><strong>"瓶颈从来不是代码"</strong></div>
+          <div class="event-meta">AI 拉平编码门槛 · 产品判断力才是壁垒</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 配图2：公式卡片 -->
+<div class="label">配图 2</div>
+<div class="window">
+  <div class="titlebar">
+    <div class="dot dot-red"></div>
+    <div class="dot dot-yellow"></div>
+    <div class="dot dot-green"></div>
+    <div class="titlebar-text">一人企业公式</div>
+  </div>
+  <div class="window-body">
+    <div class="formula-card">
+      <div class="formula-title">AI 红利的本质</div>
+      <div class="formula">
+        <div class="formula-item">🔧 手艺</div>
+        <div class="formula-op">+</div>
+        <div class="formula-item">🤖 AI</div>
+        <div class="formula-op">+</div>
+        <div class="formula-item">🌍 市场</div>
+        <div class="formula-op">=</div>
+        <div class="formula-item highlight">💰 一门生意</div>
+      </div>
+      <div class="formula-result">不是去学新东西，是把你会的事杠杆化</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 配图3：三个心理陷阱 -->
+<div class="label">配图 3</div>
+<div class="window">
+  <div class="titlebar">
+    <div class="dot dot-red"></div>
+    <div class="dot dot-yellow"></div>
+    <div class="dot dot-green"></div>
+    <div class="titlebar-text">三个让你犹豫的陷阱</div>
+  </div>
+  <div class="window-body">
+    <div class="traps">
+      <div class="trap trap-1">
+        <div class="trap-name">🔴 锚定过去</div>
+        <div class="trap-quote">"我的技术栈还能吃很多年"</div>
+        <div class="trap-answer">AI 都能自己买域名上线了，纯执行层的价值正在加速归零</div>
+      </div>
+      <div class="trap trap-2">
+        <div class="trap-name">🟡 完美主义</div>
+        <div class="trap-quote">"等我学明白了再动手"</div>
+        <div class="trap-answer">你花三个月学明白，工具已经更新了三个大版本。先动手，数据会告诉你答案。</div>
+      </div>
+      <div class="trap trap-3">
+        <div class="trap-name">🔵 舒适区惯性</div>
+        <div class="trap-quote">"我现在收入还行，没必要折腾"</div>
+        <div class="trap-answer">2003 年有无数人说过同样的话。等你觉得有必要的时候，已经来不及了。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

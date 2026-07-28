@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anthropic 员工手册 - 配图</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 120px;
+  }
+
+  .cover {
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 2.35 / 1;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: clamp(20px, 5vw, 60px);
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -30%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(233, 69, 96, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover::after {
+    content: "";
+    position: absolute;
+    bottom: -40%;
+    left: -20%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(52, 152, 219, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover .tag {
+    display: inline-block;
+    background: rgba(233, 69, 96, 0.9);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+  }
+  .cover h1 {
+    font-size: clamp(18px, 4vw, 36px);
+    font-weight: 800;
+    line-height: 1.4;
+    text-align: center;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover h1 span { color: #e94560; }
+  .cover .subtitle {
+    font-size: clamp(12px, 2vw, 16px);
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+  }
+  .cover .numbers {
+    display: flex;
+    gap: clamp(16px, 2vw, 30px);
+    margin-top: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover .num-box {
+    text-align: center;
+  }
+  .cover .num-box .num {
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 900;
+  }
+  .cover .num-box .num.red { color: #e94560; }
+  .cover .num-box .num.green { color: #2ecc71; }
+  .cover .num-box .label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+  }
+  .cover .arrow {
+    font-size: clamp(24px, 3vw, 36px);
+    color: rgba(255,255,255,0.3);
+    align-self: center;
+  }
+
+  .divider {
+    width: clamp(200px, 60vw, 400px);
+    border: none;
+    border-top: 2px dashed #ccc;
+  }
+
+  .window {
+    width: clamp(300px, 80vw, 520px);
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+  .titlebar {
+    background: #f0f0f0;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot-red { background: #ff5f57; }
+  .dot-yellow { background: #febc2e; }
+  .dot-green { background: #28c840; }
+  .titlebar-text {
+    margin-left: 8px;
+    font-size: 13px;
+    color: #666;
+    font-weight: 500;
+  }
+  .window-body {
+    padding: clamp(30px, 3vw, 40px);
+  }
+
+  /* 配图1：54% → 7% 对比 */
+  .comparison {
+    display: flex;
+    gap: clamp(20px, 3vw, 40px);
+    align-items: stretch;
+  }
+  .comp-card {
+    flex: 1;
+    border-radius: 12px;
+    padding: clamp(24px, 3vw, 32px);
+    text-align: center;
+  }
+  .comp-card.before {
+    background: #fff5f5;
+    border: 2px solid #fee;
+  }
+  .comp-card.after {
+    background: #f0faf0;
+    border: 2px solid #d4edda;
+  }
+  .comp-card .comp-label {
+    font-size: 13px;
+    color: #999;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .comp-card .comp-num {
+    font-size: clamp(42px, 5vw, 64px);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .comp-card.before .comp-num { color: #e74c3c; }
+  .comp-card.after .comp-num { color: #27ae60; }
+  .comp-card .comp-desc {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.5;
+  }
+  .comp-arrow-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(28px, 3vw, 40px);
+    color: #e94560;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+  .comp-bottom {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #eee;
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+    line-height: 1.6;
+  }
+  .comp-bottom strong { color: #333; }
+
+  /* 配图2：Agent 岗位说明书结构 */
+  .agent-grid {
+    display: flex;
+    gap: clamp(12px, 1.5vw, 20px);
+    margin-bottom: 20px;
+  }
+  .agent-card {
+    flex: 1;
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: clamp(16px, 2vw, 24px);
+    border-left: 4px solid;
+  }
+  .agent-card:nth-child(1) { border-color: #3498db; }
+  .agent-card:nth-child(2) { border-color: #e67e22; }
+  .agent-card:nth-child(3) { border-color: #9b59b6; }
+  .agent-card .agent-name {
+    font-size: clamp(14px, 1.6vw, 16px);
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #333;
+  }
+  .agent-card:nth-child(1) .agent-name { color: #3498db; }
+  .agent-card:nth-child(2) .agent-name { color: #e67e22; }
+  .agent-card:nth-child(3) .agent-name { color: #9b59b6; }
+  .agent-card .agent-role {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 10px;
+  }
+  .agent-card .file-list {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.8;
+  }
+  .agent-card .file-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .agent-card .file-tag {
+    display: inline-block;
+    background: #e8e8e8;
+    color: #555;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-family: "SF Mono", "Monaco", monospace;
+  }
+  .agent-card:nth-child(1) .file-tag { background: #ebf5fb; color: #2980b9; }
+  .agent-card:nth-child(2) .file-tag { background: #fef5e7; color: #d35400; }
+  .agent-card:nth-child(3) .file-tag { background: #f4ecf7; color: #8e44ad; }
+  .insight-bar {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-radius: 8px;
+    padding: clamp(14px, 2vw, 18px) clamp(18px, 2vw, 24px);
+    color: #fff;
+    font-size: clamp(13px, 1.5vw, 15px);
+    line-height: 1.5;
+    text-align: center;
+  }
+  .insight-bar strong { color: #e94560; }
+</style>
+</head>
+<body>
+
+<!-- 封面 -->
+<div class="cover">
+  <h1>连 Anthropic 都在给 AI 做<span>"岗前培训"</span></h1>
+  <div class="subtitle">失控率从 54% 降到 7% —— 不是换模型，不是加算力，只是写清楚了指令</div>
+  <div class="numbers">
+    <div class="num-box">
+      <div class="num red">54%</div>
+      <div class="label">改造前失控率</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="num-box">
+      <div class="num green">7%</div>
+      <div class="label">改造后失控率</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 配图1：54% vs 7% 对比 -->
+<div class="window">
+  <div class="titlebar">
+    <div class="dot dot-red"></div>
+    <div class="dot dot-yellow"></div>
+    <div class="dot dot-green"></div>
+    <div class="titlebar-text">同一模型，同一能力，只是上下文更清晰了</div>
+  </div>
+  <div class="window-body">
+    <div class="comparison">
+      <div class="comp-card before">
+        <div class="comp-label">改造前</div>
+        <div class="comp-num">54%</div>
+        <div class="comp-desc">AI 经常"跑偏"<br>做你没让它做的事</div>
+      </div>
+      <div class="comp-arrow-box">→</div>
+      <div class="comp-card after">
+        <div class="comp-label">改造后</div>
+        <div class="comp-num">7%</div>
+        <div class="comp-desc">失控率降 7 倍<br>只靠一份"员工手册"</div>
+      </div>
+    </div>
+    <div class="comp-bottom">
+      <strong>Anthropic 的"员工手册"写了什么？</strong><br>
+      你的角色是什么 · 能做什么 · 不能做什么 · 模糊情况怎么处理 · 什么必须请示
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 配图2：3 个 Agent 的岗位说明书 -->
+<div class="window">
+  <div class="titlebar">
+    <div class="dot dot-red"></div>
+    <div class="dot dot-yellow"></div>
+    <div class="dot dot-green"></div>
+    <div class="titlebar-text">3 个 Agent × 4 份"岗位说明书" = 稳定运转</div>
+  </div>
+  <div class="window-body">
+    <div class="agent-grid">
+      <div class="agent-card">
+        <div class="agent-name">📱 公众号君</div>
+        <div class="agent-role">内容创作专家</div>
+        <div class="file-list">
+          <div class="file-item"><span class="file-tag">SOUL.md</span> 冷静·数据导向</div>
+          <div class="file-item"><span class="file-tag">AGENTS.md</span> 选题→初稿→配图</div>
+          <div class="file-item"><span class="file-tag">TOOLS.md</span> 工具优先级</div>
+          <div class="file-item"><span class="file-tag">MEMORY.md</span> 标题/时段/翻车</div>
+        </div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-name">💡 知乎君</div>
+        <div class="agent-role">深度回答专家</div>
+        <div class="file-list">
+          <div class="file-item"><span class="file-tag">SOUL.md</span> 专业·有温度</div>
+          <div class="file-item"><span class="file-tag">AGENTS.md</span> 找题→回答→优化</div>
+          <div class="file-item"><span class="file-tag">TOOLS.md</span> 工具优先级</div>
+          <div class="file-item"><span class="file-tag">MEMORY.md</span> 高赞模式/避坑</div>
+        </div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-name">🎯 调度员</div>
+        <div class="agent-role">任务分配专家</div>
+        <div class="file-list">
+          <div class="file-item"><span class="file-tag">SOUL.md</span> 架构思维</div>
+          <div class="file-item"><span class="file-tag">AGENTS.md</span> 热点→分配→追踪</div>
+          <div class="file-item"><span class="file-tag">TOOLS.md</span> 工具优先级</div>
+          <div class="file-item"><span class="file-tag">MEMORY.md</span> 分配效率/质量</div>
+        </div>
+      </div>
+    </div>
+    <div class="insight-bar">
+      <strong>核心洞察：</strong>AI 的表现 80% 取决于你怎么定义它的"工作环境"，20% 才是模型本身的能力
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

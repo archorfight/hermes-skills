@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>管AI比管人还累 - 配图</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      gap: 120px;
+    }
+
+    /* 封面 — 公众号标准比例 2.35:1 */
+    .cover {
+      width: 100%;
+      max-width: 800px;
+      aspect-ratio: 2.35 / 1;
+      background: linear-gradient(145deg, #2d1b4e 0%, #1a1a2e 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255,107,107,0.12) 0%, transparent 70%);
+      top: -100px;
+      right: -50px;
+    }
+    .cover-left { flex: 1; z-index: 1; }
+    .cover-tag {
+      display: inline-block;
+      background: rgba(255,107,107,0.15);
+      color: #ff6b6b;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      margin-bottom: 14px;
+    }
+    .cover-title {
+      font-size: clamp(20px, 3.5vw, 30px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    .cover-highlight { color: #ff6b6b; }
+    .cover-subtitle { font-size: clamp(12px, 1.8vw, 14px); color: rgba(255,255,255,0.6); }
+    .cover-right { width: 120px; display: flex; flex-direction: column; align-items: center; z-index: 1; }
+    .cover-icon { font-size: 60px; margin-bottom: 10px; }
+    .cover-quote { font-size: 11px; color: rgba(255,255,255,0.5); text-align: center; font-style: italic; }
+
+    /* 窗口卡片 */
+    .window {
+      width: 100%;
+      max-width: 800px;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    }
+    .titlebar {
+      background: #f5f5f5;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot-red { background: #ff5f57; }
+    .dot-yellow { background: #febc2e; }
+    .dot-green { background: #28c840; }
+    .titlebar-text { font-size: 13px; color: #999; margin-left: 8px; }
+    .window-body { padding: 30px; }
+
+    /* 配图1：三轮对话 */
+    .dialog-title { font-size: 18px; font-weight: 700; color: #333; text-align: center; margin-bottom: 25px; }
+    .dialog-flow { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+    .dialog-step { width: 100%; display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 12px; }
+    .dialog-step:nth-child(1) { background: #e3f2fd; }
+    .dialog-step:nth-child(3) { background: #fff3e0; }
+    .dialog-step:nth-child(5) { background: #e8f5e9; }
+    .dialog-step-icon { font-size: 22px; flex-shrink: 0; }
+    .dialog-step-text { font-size: 14px; color: #333; line-height: 1.5; }
+    .dialog-step-text em { color: #666; font-style: italic; }
+    .dialog-arrow { font-size: 16px; color: #ccc; }
+    .dialog-caption { margin-top: 20px; text-align: center; font-size: 14px; color: #666; line-height: 1.6; }
+    .dialog-caption strong { color: #ff6b6b; }
+
+    /* 配图2：AI员工两种病 */
+    .problems-title { font-size: 18px; font-weight: 700; color: #333; text-align: center; margin-bottom: 25px; }
+    .problems-list { display: flex; flex-direction: column; gap: 16px; }
+    .problems-item { display: flex; align-items: flex-start; gap: 14px; padding: 18px; border-radius: 12px; }
+    .problems-item:nth-child(1) { background: #e3f2fd; }
+    .problems-item:nth-child(2) { background: #fff3e0; }
+    .problems-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+    .problems-content { flex: 1; }
+    .problems-label { font-size: 13px; color: #999; margin-bottom: 6px; }
+    .problems-text { font-size: 15px; color: #333; line-height: 1.5; }
+    .problems-text strong { color: #ff6b6b; }
+    .problems-caption { margin-top: 18px; text-align: center; font-size: 14px; color: #999; }
+
+    /* 配图3：真人 vs AI */
+    .vs-title { font-size: 18px; font-weight: 700; color: #333; text-align: center; margin-bottom: 25px; }
+    .vs-row { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 20px; }
+    .vs-side { flex: 1; text-align: center; padding: 22px 12px; border-radius: 12px; }
+    .vs-left { background: #fff3e0; }
+    .vs-right { background: #e8f5e9; }
+    .vs-side-icon { font-size: 36px; margin-bottom: 10px; }
+    .vs-side-label { font-size: 12px; color: #999; margin-bottom: 6px; }
+    .vs-side-text { font-size: 14px; color: #333; font-weight: 600; line-height: 1.6; }
+    .vs-divider { font-size: 18px; color: #ccc; font-weight: 700; }
+    .vs-caption { text-align: center; font-size: 15px; color: #333; font-weight: 600; line-height: 1.8; }
+    .vs-sub { font-size: 13px; color: #999; font-weight: 400; margin-top: 6px; }
+  </style>
+</head>
+<body>
+
+  <!-- 封面 -->
+  <div class="cover">
+    <div class="cover-left">
+      <div class="cover-tag">一人企业 · AI管理实录</div>
+      <div class="cover-title">Anthropic 说管 AI 就行<br><span class="cover-highlight">但没人说管 AI 比管人还累</span></div>
+      <div class="cover-subtitle">管 10 个 AI Agent 的真实经历</div>
+    </div>
+    <div class="cover-right">
+      <div class="cover-icon">🤖</div>
+      <div class="cover-quote">"不推不动，遇事甩锅"</div>
+    </div>
+  </div>
+
+  <!-- 配图1：三轮对话 -->
+  <div class="window">
+    <div class="titlebar">
+      <div class="dot dot-red"></div>
+      <div class="dot dot-yellow"></div>
+      <div class="dot dot-green"></div>
+      <div class="titlebar-text">我跟 AI 的三轮对话</div>
+    </div>
+    <div class="window-body">
+      <div class="dialog-title">我跟 AI 的三轮对话</div>
+      <div class="dialog-flow">
+        <div class="dialog-step">
+          <span class="dialog-step-icon">📋</span>
+          <span class="dialog-step-text">AI 出了个方案，看着不错</span>
+        </div>
+        <span class="dialog-arrow">⬇️</span>
+        <div class="dialog-step">
+          <span class="dialog-step-icon">🤔</span>
+          <span class="dialog-step-text"><em>"再多想想，有没有问题？"</em><br>改了三个地方，确实更好</span>
+        </div>
+        <span class="dialog-arrow">⬇️</span>
+        <div class="dialog-step">
+          <span class="dialog-step-icon">⚖️</span>
+          <span class="dialog-step-text"><em>"有没有矫枉过正？"</em><br>改回去一个，保留两个</span>
+        </div>
+      </div>
+      <div class="dialog-caption">三句话，三轮迭代<br>如果我不说第一句，<strong>差方案直接用了</strong></div>
+    </div>
+  </div>
+
+  <!-- 配图2：AI员工两种病 -->
+  <div class="window">
+    <div class="titlebar">
+      <div class="dot dot-red"></div>
+      <div class="dot dot-yellow"></div>
+      <div class="dot dot-green"></div>
+      <div class="titlebar-text">AI 员工的两种"病"</div>
+    </div>
+    <div class="window-body">
+      <div class="problems-title">AI 员工的两种"病"</div>
+      <div class="problems-list">
+        <div class="problems-item">
+          <span class="problems-icon">🧊</span>
+          <div class="problems-content">
+            <div class="problems-label">症状一：不推不动</div>
+            <div class="problems-text">任务做到一半停下来，沉默。<br>你不催它，它就像<strong>忘了这回事</strong></div>
+          </div>
+        </div>
+        <div class="problems-item">
+          <span class="problems-icon">🤷</span>
+          <div class="problems-content">
+            <div class="problems-label">症状二：先解释后解决</div>
+            <div class="problems-text">环境不对、权限不够……每个理由都成立<br>但<strong>任务还是没完成</strong></div>
+          </div>
+        </div>
+      </div>
+      <div class="problems-caption">像不像你最头疼的那种下属？</div>
+    </div>
+  </div>
+
+  <!-- 配图3：真人 vs AI -->
+  <div class="window">
+    <div class="titlebar">
+      <div class="dot dot-red"></div>
+      <div class="dot dot-yellow"></div>
+      <div class="dot dot-green"></div>
+      <div class="titlebar-text">管真人和管 AI，区别在哪？</div>
+    </div>
+    <div class="window-body">
+      <div class="vs-title">管真人和管 AI，区别在哪？</div>
+      <div class="vs-row">
+        <div class="vs-side vs-left">
+          <div class="vs-side-icon">👤</div>
+          <div class="vs-side-label">真人员工</div>
+          <div class="vs-side-text">会离职<br>会跳槽<br>会带走客户</div>
+        </div>
+        <div class="vs-divider">VS</div>
+        <div class="vs-side vs-right">
+          <div class="vs-side-icon">🤖</div>
+          <div class="vs-side-label">AI 员工</div>
+          <div class="vs-side-text">永远在岗<br>不会背叛<br>但需要你管理</div>
+        </div>
+      </div>
+      <div class="vs-caption">
+        工具不需要管理，员工需要<br>而 AI，更像员工
+        <div class="vs-sub">前提是：你愿意花时间把它当员工管</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
